@@ -11,3 +11,8 @@
 .carousel-control-next-icon {
     filter: invert(100%);
 }
+
+.card-img-top{
+    height: 300px;
+    object-fit: contain;
+}

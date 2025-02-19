@@ -83,3 +83,29 @@ function addProduct(event) {
     alert("Produit ajouté (simulation) !");
     console.log(newProduct);
 }
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("products.json") // Charger le fichier JSON
+        .then(response => response.json())
+        .then(produits => {
+            const container = document.getElementById("produits-container");
+            container.innerHTML = ""; // Nettoyer avant d'ajouter les produits
+
+            produits.forEach(produit => {
+                container.innerHTML += `
+                    <div class="col-md-4 mt-5">
+                        <div class="card">
+                            <img src="${produit.image}" class="card-img-top" alt="${produit.name}">
+                            <div class="card-body">
+                                <h5 class="card-title">${produit.name}</h5>
+                                <p class="card-text">${produit.description}</p>
+                                <a href="#" class="btn btn-primary">En savoir plus</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        })
+        .catch(error => console.error("Erreur lors du chargement des produits:", error));
+});
