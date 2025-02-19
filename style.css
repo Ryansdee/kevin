@@ -1,0 +1,13 @@
+.carousel-item img {
+    height: 400px;
+    object-fit: contain;
+}
+.carousel-caption{
+    background: #00000081;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%);
+}
