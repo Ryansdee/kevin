@@ -51,28 +51,31 @@ function loadProducts() {
         .then(products => {
             const container = document.getElementById("products-container");
             container.innerHTML = "";
-            products.forEach((product, index) => {
-                const activeClass = index === 0 ? "active" : "";
+            products.forEach(product => {
                 container.innerHTML += `
-                    <div class="carousel-item ${activeClass}">
-                        <img src="${product.image}" class="d-block w-100 " alt="${product.name}">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>${product.name}</h5>
-                            <p>${product.description}</p>
-                            <p><strong>${product.price}€</strong></p>
+                    <div class="col-md-4 mt-5">
+                        <div class="card">
+                            <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                            <div class="card-body">
+                                <h5 class="card-title">${product.name}</h5>
+                                <p class="card-text">${product.description}</p>
+                                <p><strong>${product.price}€</strong></p>
+                                <a href="#" class="btn btn-primary">Voir le produit</a>
+                            </div>
                         </div>
                     </div>
                 `;
             });
-        });
+        })
+        .catch(error => console.error("Erreur lors du chargement des produits:", error));
 }
+
 
 // Ajouter un produit (Admin)
 function addProduct(event) {
     event.preventDefault();
 
     const newProduct = {
-        id: Date.now(),
         name: document.getElementById("name").value,
         description: document.getElementById("description").value,
         price: parseFloat(document.getElementById("price").value),
@@ -80,9 +83,21 @@ function addProduct(event) {
         image: document.getElementById("image").value
     };
 
-    alert("Produit ajouté (simulation) !");
-    console.log(newProduct);
+    fetch("add_product.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newProduct)
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message || data.error);
+        if (!data.error) {
+            window.location.href = "index.html"; // Retour à la liste des produits
+        }
+    })
+    .catch(error => console.error("Erreur:", error));
 }
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
