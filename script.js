@@ -29,7 +29,7 @@ function login(event) {
     if (users[username] && users[username].password === password) {
         sessionStorage.setItem("user", JSON.stringify(users[username]));
         alert("Connexion réussie !");
-        window.location.href = "index.html";
+        window.location.href = "admin.html";
     } else {
         alert("Identifiants incorrects !");
     }
@@ -59,7 +59,7 @@ function loadProducts() {
                         <div class="carousel-caption d-none d-md-block">
                             <h5>${product.name}</h5>
                             <p>${product.description}</p>
-                            <p><strong>${product.price}€</strong> | Stock: ${product.stock}</p>
+                            <p><strong>${product.price}€</strong></p>
                         </div>
                     </div>
                 `;

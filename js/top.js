@@ -30,13 +30,13 @@ function NavbarComponent() {
                     <!-- Formulaire de recherche -->
                     <form class="d-flex me-3" role="search" onsubmit="search(event)">
                         <input id="searchInput" class="form-control me-2" type="search" placeholder="Rechercher..." aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Rechercher</button>
+                        <button class="btn btn-success" type="submit">Rechercher</button>
                     </form>
 
                     <!-- Boutons Connexion / Inscription -->
                     <div class="d-flex">
-                        <button class="btn btn-outline-primary me-2" onclick="login()">Se connecter</button>
-                        <button class="btn btn-primary" onclick="register()">S'inscrire</button>
+                        <button class="btn btn-primary me-2"><a href="login.html" class="text-white" style="text-decoration: none">Se connecter</a></button>
+                        <button class="btn btn-primary me-2" onclick="register()">S'inscrire</button>
                     </div>
                 </div>
             </div>
@@ -65,6 +65,6 @@ function search(event) {
     if (query.trim() !== "") {
         console.log("Recherche : " + query); // Affiche la recherche dans la console
         alert("Vous avez recherché : " + query);
-        // window.location.href = "search.html?q=" + encodeURIComponent(query); // Décommente pour rediriger vers une page de résultats
+        window.location.href = "search.html?q=" + encodeURIComponent(query); // Décommente pour rediriger vers une page de résultats
     }
 }
