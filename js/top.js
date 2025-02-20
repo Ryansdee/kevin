@@ -35,7 +35,7 @@ function NavbarComponent() {
 
                     <!-- Boutons Connexion / Inscription -->
                     <div class="d-flex">
-                        <button class="btn btn-primary me-2"><a href="login.html" class="text-white" style="text-decoration: none">Se connecter</a></button>
+                        <button class="btn btn-primary me-2"><a href="login.php" class="text-white" style="text-decoration: none">Se connecter</a></button>
                         <button class="btn btn-primary me-2" onclick="register()">S'inscrire</button>
                     </div>
                 </div>
